@@ -1,11 +1,10 @@
 "use client"
 
 import Image from "next/image";
-import styles from "./css/page.module.scss";
 import logo from './img/logo-itg.png';
 import bgLyon from './img/bg-map-lyon.jpg';
 import imgPerso from './img/visuel_perso.jpg';
-import { useState } from "react";
+import React, { useState } from "react";
 import { Step1 } from "./components/Step1";
 import { Step2 } from "./components/Step2";
 import { Confirmation } from "./components/Confirmation";
@@ -23,13 +22,13 @@ export default function Home() {
     setStep(step + 1);
   }
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   }
 
   const handleSubmit = () => {
-    // Handle form submission, e.g., send data to an API
+    // Send to API
     nextStep();
     console.log(formData)
   }
@@ -46,7 +45,7 @@ export default function Home() {
         </h1>
         <div className="grid">
           <div className="grid__cell 1/2 1/1--portable">
-            <h2 className="like-h2 h2--white mb-s"><span className="underline">Obtenez l'accompagnement</span> d'Anne-Marie à Lyon et la région Auvergne-Rhône-Alpes</h2>
+            <h2 className="like-h2 h2--white mb-s"><span className="underline">Obtenez l&#39;accompagnement</span> d&#39;Anne-Marie à Lyon et la région Auvergne-Rhône-Alpes</h2>
             <h3 className="like-h3">Un vrai contact local pour le portage salarial</h3>
             <div className="bk-card">
               <div className="bk-card__img">
@@ -67,55 +66,14 @@ export default function Home() {
             <div className="bk-form">
               <form action="" method="post">
                 {step === 1 ? (
-                  <Step1 nextStep={nextStep} handleChange={handleChange} values={formData} />
+                  <Step1 nextStep={nextStep} handleChange={handleChange} />
                 ) : step === 2 ? (
-                  <Step2 nextStep={nextStep} handleChange={handleChange} handleSubmit={handleSubmit} values={formData} />
+                  <Step2 handleChange={handleChange} handleSubmit={handleSubmit} values={formData} />
                 ) : step === 3 ? (
                   <Confirmation />
                 ) : (
-                  <Step1 nextStep={nextStep} handleChange={handleChange} values={formData} />
+                  <Step1 nextStep={nextStep} handleChange={handleChange} />
                 )}
-                {/* <fieldset>
-                  <div className="chrono">Rappel sous 24h</div>
-                  <h2 className="like-h2 mb-s">Être conseillé sur le portage salarial</h2>
-                  <p className="mb-s">Estimation de salaire, contrat de travail, etc...<br />Anne-Marie vous rapelle sous 24h.</p>
-                  <legend>Avez vous une mission ?</legend>
-                  <div className="form-line">
-                    <input
-                      type="radio"
-                      id="mission-1"
-                      name="mission"
-                      value="en_cours"
-                      checked={mission === 'en_cours'}
-                      onChange={handleRadioChange} />
-                    <label htmlFor="mission-1">Oui, j'ai une mission en cours</label>
-                  </div>
-                  <div className="form-line">
-                    <input
-                      type="radio"
-                      id="mission-2"
-                      name="mission"
-                      value="en_negociation"
-                      checked={mission === 'en_negociation'}
-                      onChange={handleRadioChange}
-                    />
-                    <label htmlFor="mission-2">Oui, en cours de négociation</label>
-                  </div>
-                  <div className="form-line">
-                    <input
-                      type="radio"
-                      id="mission-3"
-                      name="mission"
-                      value="cherche_mission"
-                      checked={mission === 'cherche_mission'}
-                      onChange={handleRadioChange}
-                    />
-                    <label htmlFor="mission-3">Non, je cherche une mission</label>
-                  </div>
-                  <div className="ta-r">
-                    <button className="btn --xs" disabled={!nextStep} onClick={goToStep2}><span>Suivant</span></button>
-                  </div>
-                </fieldset> */}
               </form>
             </div>
           </div>

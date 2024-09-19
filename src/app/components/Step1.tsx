@@ -2,11 +2,16 @@
 
 import { useState } from "react";
 
-export const Step1 = ({ nextStep, handleChange, values }) => {
+interface Step1Props {
+  nextStep: () => void;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export const Step1: React.FC<Step1Props> = ({ nextStep, handleChange }) => {
   const [mission, setMission] = useState('');
   const [disabled, setDisabled] = useState(false);
 
-  const handleRadioChange = (e) => {
+  const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMission(e.target.value);
     setDisabled(true);
     handleChange(e);
@@ -27,7 +32,7 @@ export const Step1 = ({ nextStep, handleChange, values }) => {
             value="en_cours"
             checked={mission === 'en_cours'}
             onChange={handleRadioChange} />
-          <label htmlFor="mission-1">Oui, j'ai une mission en cours</label>
+          <label htmlFor="mission-1">Oui, j&#39;ai une mission en cours</label>
         </div>
         <div className="form-item form-item--radio">
           <input

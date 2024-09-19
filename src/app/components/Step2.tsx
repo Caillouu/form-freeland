@@ -2,15 +2,23 @@
 
 import { useState } from "react";
 
-export const Step2 = ({ nextStep, handleChange, handleSubmit, values }) => {
+interface Step2Props {
+  handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
+  handleSubmit: () => void;
+  values: {
+    job: string;
+    project: string;
+  }
+}
+
+export const Step2: React.FC<Step2Props> = ({ handleChange, handleSubmit , values }) => {
   const [disabled, setDisabled] = useState(false)
 
-  const onChange = (e) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const currentValue = e.target.value;
-
     handleChange(e)
-    console.log(values.project.trim())
-    if(currentValue.trim() != '' && (values.project.length > 0 || values.job.length > 0)) {
+
+    if(currentValue.length > 0 && (values.project.length > 0 || values.job.length > 0)) {
       setDisabled(true)
     } else {
       setDisabled(false)
@@ -38,7 +46,7 @@ export const Step2 = ({ nextStep, handleChange, handleSubmit, values }) => {
         />
       </div>
       <div className="ta-r">
-        <button className="btn --xs" disabled={!disabled} onClick={handleSubmit}><span>Suivant</span></button>
+        <button type="submit" className="btn --xs" disabled={!disabled} onClick={handleSubmit}><span>Suivant</span></button>
       </div>
     </fieldset>
   );
