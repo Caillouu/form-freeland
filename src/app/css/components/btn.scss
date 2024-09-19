@@ -1,0 +1,70 @@
+@import "../breakpoints.scss";
+
+.btn {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  padding: 14px 76px;
+  font-size: 16px;
+  color: var(--white);
+  background-color: var(--orange-light);
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  
+  @include md {
+    font-size: 20px;
+  }
+
+  &.--xs {
+    padding: 14px 36px 14px 30px;
+
+    &:after {
+      right: 16px;
+    }
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--orange);
+    transition: transform 0.3s cubic-bezier(0.7, 0, 0.2, 1);
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 6px;
+    height: 12px;
+    top: 50%;
+    right: 24px;
+    transform: translate(0, -50%);
+    background: url('../../img/arrow_white.svg') no-repeat left top;
+    background-size: 6px 12px;
+  }
+
+  &:hover {
+    &:before {
+      transform: translate3d(0, -100%, 0);
+    }
+  }
+
+  &[disabled] {
+    cursor: no-drop;
+    background-color: var(--grey);
+
+    &:before {
+      display: none;
+    }
+  }
+
+  span {
+    position: relative;
+    z-index: 1;
+  }
+}

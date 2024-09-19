@@ -1,0 +1,41 @@
+@import "../breakpoints.scss";
+
+.wrapper-number {
+  padding: 10px;
+  background-color: var(--white);
+  
+  @include md {
+    padding: 52px 52px 42px 52px;
+  }
+
+  .grid {
+    margin-bottom: 32px;
+    margin-left: -110px;
+
+    
+    .grid__cell {
+      padding-left: 110px;
+      margin-bottom: 20px;
+
+      @include md {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.bk-number {
+  &__value {
+    font-size: 36px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--purple);
+  }
+  
+  &__text {
+    margin-bottom: 6px;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}

@@ -1,0 +1,177 @@
+@import "../breakpoints.scss";
+
+.bk-form {
+  position: relative;
+  float: right;
+  max-width: 100%;
+  width: 100%;
+  min-height: 576px;
+  padding: 26px;
+  margin-bottom: -46px;
+  background-color: var(--purple);
+  color: var(--white);
+  
+  @include lg {
+    max-width: 480px;
+    padding: 46px;
+  }
+
+  .chrono {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 70px;
+    padding: 15px 7px 10px;
+    top: 20px;
+    right: 20px;
+    background: url('../../img/picto_rappel.png') no-repeat left top;
+    background-size: 60px auto;
+    font-weight: bold;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 0;
+
+    @include lg {
+      font-size: 16px;
+      top: 25px;
+      right: 25px;
+      width: 89px;
+      height: 101px;
+      background-size: 100% auto;
+    }
+  }
+
+  h2 {
+    padding-right: 60px;
+    text-transform: none;
+    
+    @include lg {
+      padding-right: 80px;
+      font-size: 32px;
+    }
+  }
+
+  p {
+    letter-spacing: 0;
+  }
+
+  .confirmation {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+    color: #6aea97;
+  }
+
+  fieldset {
+    border: none;
+    padding: 0;
+
+    legend {
+      float: left;
+      width: 100%;
+      margin-bottom: 12px;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .form-item {
+      clear: both;
+      margin-bottom: 50px;
+
+      label {
+        display: block;
+        margin-bottom: 20px;
+        font-size: 26px;
+        font-weight: bold;
+      }
+
+      .wrapper-select {
+        position: relative;
+
+        &:after {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 50%;
+          right: 20px;
+          transform: translate(0, -50%);
+          height : 0;
+          width : 0;
+          border-top : 5px solid var(--black);
+          border-right : 5px solid transparent;
+          border-left : 6px solid transparent;
+          pointer-events: none;
+        }
+
+        select {
+          width: 100%;
+          padding: 10px;
+          border-radius: 8px;
+          appearance: none;
+        }
+      }
+      
+      textarea {
+        width: 100%;
+        height: 145px;
+        padding: 22px;
+        border-radius: 8px;
+        resize: none;
+      }
+
+      &--radio {
+        margin-bottom: 10px;
+  
+          input[type="radio"] {
+            display: none;
+            
+            &:checked {
+              + label {
+                background-color: var(--orange);
+      
+                &:before {
+                  background-color: var(--orange);
+                }
+              }
+            }
+          }
+      
+          label {
+            display: block;
+            padding: 18px;
+            background-color: #61448b;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: normal;
+            text-indent: 0;
+            cursor: pointer;
+            transition: ease .3s;
+      
+            &:before {
+              content: '';
+              display: inline-block;
+              vertical-align: text-top;
+              width: 8px;
+              height: 8px;
+              border: 4px solid var(--white);
+              margin-right: 16px;
+              background-color: var(--white);
+              border-radius: 50%;
+              transition: ease .3s;
+            }
+            
+            &:hover {
+              background-color: var(--orange-light);
+            }
+          }
+        }
+      }
+    }
+}
